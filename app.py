@@ -78,7 +78,7 @@ tokens = contract.functions.totalSupply().call()
 token_id = st.selectbox("Choose a Business Registry Token ID", list(range(tokens)))
 new_phone_number = st.text_input("Enter the new phone number")
 report_uri = st.text_area("Enter notes about the change")
-if st.button("Sumbmit Edits"):
+if st.button("Submit Edits"):
 
     # Use the token_id and the report_uri to record the appraisal
     tx_hash = contract.functions.editPhoneNumber(
