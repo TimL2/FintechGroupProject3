@@ -50,11 +50,14 @@ st.markdown("---")
 # Register New Business
 ################################################################################
 st.markdown("## Register a New Business")
-
+industries = ['Agriculture/AgTech', 'Basic Metal Production', 'Chemical', 'Commerce', 'Construction', 'Education/EdTech', 'Financial Services/FinTech', 'Food', 'Forestry',
+                'Health Services', 'Hotels/Tourism/Catering', 'Mechanical/Electrical Engineering', 'Media', 'Oil and Gas Production', 'Postal/Telecommunications', 
+                'Public Services', 'Shipping', 'Textiles', 'Transport', 'Transport Equipment Manufacturing', 'Utilities']
 business_name = st.text_input("Enter the name of the business")
 owner_name = st.text_input("Enter the owner's/LLC's name")
 phone_number = st.text_input("Enter the company phone number")
 business_uri = st.text_input("Enter the business website")
+industry_name = st.selectbox("Desired Industry", options=industries)
 
 if st.button("Register Business"):
     tx_hash = contract.functions.registerBusiness(
@@ -62,6 +65,7 @@ if st.button("Register Business"):
         business_name,
         owner_name,
         int(phone_number),
+        industry_name,
         business_uri
     ).transact({'from': address, 'gas': 1000000})
     receipt = w3.eth.waitForTransactionReceipt(tx_hash)

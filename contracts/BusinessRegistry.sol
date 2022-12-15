@@ -9,6 +9,7 @@ contract BusinessRegistry is ERC721Full {
         string businessName;
         string ownerName;
         uint256 phoneNumber;
+        string industryName;
     }
 
     mapping(uint256 => Business) public businessListing;
@@ -20,6 +21,7 @@ contract BusinessRegistry is ERC721Full {
         string memory businessName,
         string memory ownerName,
         uint256 initialPhoneNumber,
+        string memory industryName,
         string memory tokenURI
     ) public returns (uint256) {
         uint256 tokenId = totalSupply();
@@ -27,9 +29,10 @@ contract BusinessRegistry is ERC721Full {
         _mint(owner, tokenId);
         _setTokenURI(tokenId, tokenURI);
 
-        businessListing[tokenId] = Business(businessName, ownerName, initialPhoneNumber);
+        businessListing[tokenId] = Business(businessName, ownerName, initialPhoneNumber, industryName);
 
         return tokenId;
+        return tokenURI;
     }
 
     function editPhoneNumber(
