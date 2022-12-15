@@ -4,13 +4,13 @@
 from PIL import Image, ImageDraw, ImageFont
 
 # assign variable name and open image
-NFT = Image.open('default.png')
+NFT = Image.open('./images/default.png')
 
 # convert image into editable form
 edit = ImageDraw.Draw(NFT)
 
 # Font selection
-myFont = ImageFont.truetype('MISTRAL.TTF', 55)
+myFont = ImageFont.truetype('./fonts/MISTRAL.TTF', 55)
 
 edit.text((225, 30), "Kassie's KupKakes", fill =(255, 0, 0), font=myFont)
 edit.text((225, 153), "Kassie Overton", fill =(255, 0, 0), font=myFont)
@@ -18,4 +18,4 @@ edit.text((225, 153), "Kassie Overton", fill =(255, 0, 0), font=myFont)
 # show and save the image
 
 NFT.show()
-NFT.save('business_NFT.png')
+NFT.save('./images/business_NFT.png')
