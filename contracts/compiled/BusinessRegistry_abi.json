@@ -1,12 +1,70 @@
 [
 	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "approved",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "Approval",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "owner",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "operator",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "bool",
+				"name": "approved",
+				"type": "bool"
+			}
+		],
+		"name": "ApprovalForAll",
+		"type": "event"
+	},
+	{
 		"constant": false,
 		"inputs": [
 			{
+				"internalType": "address",
 				"name": "to",
 				"type": "address"
 			},
 			{
+				"internalType": "uint256",
 				"name": "tokenId",
 				"type": "uint256"
 			}
@@ -21,21 +79,25 @@
 		"constant": false,
 		"inputs": [
 			{
+				"internalType": "uint256",
 				"name": "tokenId",
 				"type": "uint256"
 			},
 			{
+				"internalType": "uint256",
 				"name": "newPhoneNumber",
 				"type": "uint256"
 			},
 			{
-				"name": "reportURI",
+				"internalType": "string",
+				"name": "changeNote",
 				"type": "string"
 			}
 		],
 		"name": "editPhoneNumber",
 		"outputs": [
 			{
+				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}
@@ -48,26 +110,32 @@
 		"constant": false,
 		"inputs": [
 			{
+				"internalType": "address",
 				"name": "owner",
 				"type": "address"
 			},
 			{
+				"internalType": "string",
 				"name": "businessName",
 				"type": "string"
 			},
 			{
+				"internalType": "string",
 				"name": "ownerName",
 				"type": "string"
 			},
 			{
+				"internalType": "uint256",
 				"name": "initialPhoneNumber",
 				"type": "uint256"
 			},
 			{
+				"internalType": "string",
 				"name": "industryName",
 				"type": "string"
 			},
 			{
+				"internalType": "string",
 				"name": "tokenURI",
 				"type": "string"
 			}
@@ -75,6 +143,7 @@
 		"name": "registerBusiness",
 		"outputs": [
 			{
+				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}
@@ -84,17 +153,70 @@
 		"type": "function"
 	},
 	{
-		"constant": false,
+		"anonymous": false,
 		"inputs": [
 			{
+				"indexed": true,
+				"internalType": "address",
 				"name": "from",
 				"type": "address"
 			},
 			{
+				"indexed": true,
+				"internalType": "address",
 				"name": "to",
 				"type": "address"
 			},
 			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "Transfer",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "phoneNumber",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "changeNote",
+				"type": "string"
+			}
+		],
+		"name": "editRegistry",
+		"type": "event"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
 				"name": "tokenId",
 				"type": "uint256"
 			}
@@ -109,18 +231,22 @@
 		"constant": false,
 		"inputs": [
 			{
+				"internalType": "address",
 				"name": "from",
 				"type": "address"
 			},
 			{
+				"internalType": "address",
 				"name": "to",
 				"type": "address"
 			},
 			{
+				"internalType": "uint256",
 				"name": "tokenId",
 				"type": "uint256"
 			},
 			{
+				"internalType": "bytes",
 				"name": "_data",
 				"type": "bytes"
 			}
@@ -135,10 +261,12 @@
 		"constant": false,
 		"inputs": [
 			{
+				"internalType": "address",
 				"name": "to",
 				"type": "address"
 			},
 			{
+				"internalType": "bool",
 				"name": "approved",
 				"type": "bool"
 			}
@@ -153,14 +281,17 @@
 		"constant": false,
 		"inputs": [
 			{
+				"internalType": "address",
 				"name": "from",
 				"type": "address"
 			},
 			{
+				"internalType": "address",
 				"name": "to",
 				"type": "address"
 			},
 			{
+				"internalType": "uint256",
 				"name": "tokenId",
 				"type": "uint256"
 			}
@@ -172,103 +303,10 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"name": "tokenId",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "phoneNumber",
-				"type": "uint256"
-			},
-			{
-				"indexed": false,
-				"name": "reportURI",
-				"type": "string"
-			}
-		],
-		"name": "editRegistry",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"name": "from",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"name": "to",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "Transfer",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"name": "approved",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"name": "tokenId",
-				"type": "uint256"
-			}
-		],
-		"name": "Approval",
-		"type": "event"
-	},
-	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": true,
-				"name": "owner",
-				"type": "address"
-			},
-			{
-				"indexed": true,
-				"name": "operator",
-				"type": "address"
-			},
-			{
-				"indexed": false,
-				"name": "approved",
-				"type": "bool"
-			}
-		],
-		"name": "ApprovalForAll",
-		"type": "event"
-	},
-	{
 		"constant": true,
 		"inputs": [
 			{
+				"internalType": "address",
 				"name": "owner",
 				"type": "address"
 			}
@@ -276,6 +314,7 @@
 		"name": "balanceOf",
 		"outputs": [
 			{
+				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}
@@ -290,6 +329,7 @@
 		"name": "baseURI",
 		"outputs": [
 			{
+				"internalType": "string",
 				"name": "",
 				"type": "string"
 			}
@@ -302,6 +342,7 @@
 		"constant": true,
 		"inputs": [
 			{
+				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}
@@ -309,18 +350,22 @@
 		"name": "businessListing",
 		"outputs": [
 			{
+				"internalType": "string",
 				"name": "businessName",
 				"type": "string"
 			},
 			{
+				"internalType": "string",
 				"name": "ownerName",
 				"type": "string"
 			},
 			{
+				"internalType": "uint256",
 				"name": "phoneNumber",
 				"type": "uint256"
 			},
 			{
+				"internalType": "string",
 				"name": "industryName",
 				"type": "string"
 			}
@@ -333,6 +378,7 @@
 		"constant": true,
 		"inputs": [
 			{
+				"internalType": "uint256",
 				"name": "tokenId",
 				"type": "uint256"
 			}
@@ -340,6 +386,7 @@
 		"name": "getApproved",
 		"outputs": [
 			{
+				"internalType": "address",
 				"name": "",
 				"type": "address"
 			}
@@ -352,10 +399,12 @@
 		"constant": true,
 		"inputs": [
 			{
+				"internalType": "address",
 				"name": "owner",
 				"type": "address"
 			},
 			{
+				"internalType": "address",
 				"name": "operator",
 				"type": "address"
 			}
@@ -363,6 +412,7 @@
 		"name": "isApprovedForAll",
 		"outputs": [
 			{
+				"internalType": "bool",
 				"name": "",
 				"type": "bool"
 			}
@@ -377,6 +427,7 @@
 		"name": "name",
 		"outputs": [
 			{
+				"internalType": "string",
 				"name": "",
 				"type": "string"
 			}
@@ -389,6 +440,7 @@
 		"constant": true,
 		"inputs": [
 			{
+				"internalType": "uint256",
 				"name": "tokenId",
 				"type": "uint256"
 			}
@@ -396,6 +448,7 @@
 		"name": "ownerOf",
 		"outputs": [
 			{
+				"internalType": "address",
 				"name": "",
 				"type": "address"
 			}
@@ -408,6 +461,7 @@
 		"constant": true,
 		"inputs": [
 			{
+				"internalType": "bytes4",
 				"name": "interfaceId",
 				"type": "bytes4"
 			}
@@ -415,6 +469,7 @@
 		"name": "supportsInterface",
 		"outputs": [
 			{
+				"internalType": "bool",
 				"name": "",
 				"type": "bool"
 			}
@@ -429,6 +484,7 @@
 		"name": "symbol",
 		"outputs": [
 			{
+				"internalType": "string",
 				"name": "",
 				"type": "string"
 			}
@@ -441,6 +497,7 @@
 		"constant": true,
 		"inputs": [
 			{
+				"internalType": "uint256",
 				"name": "index",
 				"type": "uint256"
 			}
@@ -448,6 +505,7 @@
 		"name": "tokenByIndex",
 		"outputs": [
 			{
+				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}
@@ -460,10 +518,12 @@
 		"constant": true,
 		"inputs": [
 			{
+				"internalType": "address",
 				"name": "owner",
 				"type": "address"
 			},
 			{
+				"internalType": "uint256",
 				"name": "index",
 				"type": "uint256"
 			}
@@ -471,6 +531,7 @@
 		"name": "tokenOfOwnerByIndex",
 		"outputs": [
 			{
+				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}
@@ -483,6 +544,7 @@
 		"constant": true,
 		"inputs": [
 			{
+				"internalType": "uint256",
 				"name": "tokenId",
 				"type": "uint256"
 			}
@@ -490,6 +552,7 @@
 		"name": "tokenURI",
 		"outputs": [
 			{
+				"internalType": "string",
 				"name": "",
 				"type": "string"
 			}
@@ -504,6 +567,7 @@
 		"name": "totalSupply",
 		"outputs": [
 			{
+				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}

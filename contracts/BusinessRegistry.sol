@@ -14,7 +14,7 @@ contract BusinessRegistry is ERC721Full {
 
     mapping(uint256 => Business) public businessListing;
 
-    event editRegistry(uint256 tokenId, uint256 phoneNumber, string reportURI);
+    event editRegistry(uint256 tokenId, uint256 phoneNumber, string changeNote);
 
     function registerBusiness(
         address owner,
@@ -32,17 +32,16 @@ contract BusinessRegistry is ERC721Full {
         businessListing[tokenId] = Business(businessName, ownerName, initialPhoneNumber, industryName);
 
         return tokenId;
-        return tokenURI;
     }
 
     function editPhoneNumber(
         uint256 tokenId,
         uint256 newPhoneNumber,
-        string memory reportURI
+        string memory changeNote
     ) public returns (uint256) {
         businessListing[tokenId].phoneNumber = newPhoneNumber;
 
-        emit editRegistry(tokenId, newPhoneNumber, reportURI);
+        emit editRegistry(tokenId, newPhoneNumber, changeNote);
 
         return businessListing[tokenId].phoneNumber;
     }

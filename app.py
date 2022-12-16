@@ -129,26 +129,36 @@ st.markdown("---")
 st.markdown("## Get the business registry history")
 business_token_id = st.selectbox("Business ID", list(range(tokens)))
 if st.button("Get Business Registry"):
-#    business_filter = contract.events.editRegistry.createFilter(
     business_filter = contract.events.Transfer.createFilter(
         fromBlock=0,
         argument_filters={"tokenId": business_token_id}
     )
+    edit_filter = contract.events.editRegistry.createFilter(
+        fromBlock=0,
+        argument_filters={"tokenId": business_token_id}
+    )
+    st.markdown("### Business Registry Event Log")
     history = business_filter.get_all_entries()
     if history:
         for hist in history:
             report_dictionary = dict(hist)
-            st.markdown("### Business Registry Event Log")
             st.write(report_dictionary)
-            st.markdown("### Business Registry Details")
-            st.write(report_dictionary["args"])
- #           st.write(
-            tx_receipt = w3.eth.get_transaction_receipt(report_dictionary['transactionHash'])
- #               log_to_process = tx_receipt['logs'][0]
- #               processed_log = contract.events.myEvent().process_log(log_to_process)
- #               processed_log
- #           )
-            st.write('sup')
-            st.write(tx_receipt)
     else:
         st.write("This business has no history")
+    st.markdown("### Registry Edits") 
+    edit_history = edit_filter.get_all_entries()
+    if edit_history:
+        for hist in edit_history:
+            report_dictionary = dict(hist)
+            st.write(report_dictionary)
+    else:
+        st.write("This business has no edits")        
+            
+            
+    token_details = contract.functions.businessListing(business_token_id).call()
+    st.markdown("### Current Business Registry Details")
+    st.write(f'Name:     {token_details[0]}')
+    st.write(f'Owner:     {token_details[1]}')
+    st.write(f'Phone:     {token_details[2]}')
+    st.write(f'Industry:     {token_details[3]}')
+    
