@@ -127,7 +127,7 @@ st.markdown("---")
 # Get Business Record
 ################################################################################
 st.markdown("## Get the business registry history")
-business_token_id = st.number_input("Business ID", value=0, step=1)
+business_token_id = st.selectbox("Business ID", list(range(tokens)))
 if st.button("Get Business Registry"):
     business_filter = contract.events.editRegistry.createFilter(
         fromBlock=0,
