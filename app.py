@@ -4,6 +4,11 @@ from web3 import Web3
 from pathlib import Path
 from dotenv import load_dotenv
 import streamlit as st
+from datetime import date
+# Image allows for open, save, show of images
+# ImageDraw allows editting of image
+# ImageFont allows choice of font
+from PIL import Image, ImageDraw, ImageFont
 
 load_dotenv()
 
@@ -58,6 +63,8 @@ owner_name = st.text_input("Enter the owner's/LLC's name")
 phone_number = st.text_input("Enter the company phone number")
 business_uri = st.text_input("Enter the business website")
 industry_name = st.selectbox("Desired Industry", options=industries)
+current_time = date.today().strftime("%b-%d-%Y")
+
 
 if st.button("Register Business"):
     tx_hash = contract.functions.registerBusiness(
@@ -71,7 +78,28 @@ if st.button("Register Business"):
     receipt = w3.eth.waitForTransactionReceipt(tx_hash)
     st.write("Transaction receipt mined:")
     st.write(dict(receipt))
-st.markdown("---")
+    t_id = contract.functions.totalSupply().call()
+    # assign variable name and open image
+    NFT = Image.open('./images/default.png')
+
+    # convert image into editable form
+    edit = ImageDraw.Draw(NFT)
+
+    # Font selection
+    myFont = ImageFont.truetype('./fonts/futur.TTF', 55)
+    tokenFont = ImageFont.truetype('./fonts/Filxgirl.TTF', 75)
+
+    edit.text((15, 30), business_name, fill =(255, 0, 0), font=myFont)
+    edit.text((15, 123), industry_name, fill =(255, 0, 0), font=myFont)
+    edit.text((15, 216), business_uri, fill =(255, 0, 0), font=myFont)
+    edit.text((900, 315), str(t_id-1), fill = (0, 0, 0), font=tokenFont)
+    edit.text((450, 315), current_time, fill = (255, 255, 255), font=tokenFont)
+
+    # show and save the image
+
+    NFT.show()
+    NFT.save('./images/business_NFT.png')
+    st.markdown("---")
 
 
 ################################################################################
@@ -82,6 +110,7 @@ tokens = contract.functions.totalSupply().call()
 token_id = st.selectbox("Choose a Business Registry Token ID", list(range(tokens)))
 new_phone_number = st.text_input("Enter the new phone number")
 report_uri = st.text_area("Enter notes about the change")
+
 if st.button("Submit Edits"):
 
     # Use the token_id and the report_uri to record the appraisal
