@@ -129,7 +129,8 @@ st.markdown("---")
 st.markdown("## Get the business registry history")
 business_token_id = st.selectbox("Business ID", list(range(tokens)))
 if st.button("Get Business Registry"):
-    business_filter = contract.events.editRegistry.createFilter(
+#    business_filter = contract.events.editRegistry.createFilter(
+    business_filter = contract.events.Transfer.createFilter(
         fromBlock=0,
         argument_filters={"tokenId": business_token_id}
     )
