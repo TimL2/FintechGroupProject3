@@ -142,13 +142,5 @@ if st.button("Get Business Registry"):
             st.write(report_dictionary)
             st.markdown("### Business Registry Details")
             st.write(report_dictionary["args"])
- #           st.write(
-            tx_receipt = w3.eth.get_transaction_receipt(report_dictionary['transactionHash'])
- #               log_to_process = tx_receipt['logs'][0]
- #               processed_log = contract.events.myEvent().process_log(log_to_process)
- #               processed_log
- #           )
-            st.write('sup')
-            st.write(tx_receipt)
     else:
         st.write("This business has no history")
